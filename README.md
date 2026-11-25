@@ -10,6 +10,7 @@ The repository currently contains Markdown instructions and code examples. There
 
 | Path | Contents |
 | --- | --- |
+| [AGENTS.md](AGENTS.md) | Agent instructions explaining what to read for each task and how to work in this repository. |
 | [memory_setup/still.md](memory_setup/still.md) | Instructions for setting up repository-based project memory using `AGENTS.md` and Markdown files. Includes a chronological `TIMELINE.md` that records completed work as development progresses. |
 | [next_js_prod_skill/MakeStandlonebuild.md](next_js_prod_skill/MakeStandlonebuild.md) | Next.js standalone build configuration, a packaging script example, npm commands, and an agent setup prompt. |
 | [ui_skills_by_emilkowalski/](ui_skills_by_emilkowalski/) | A collection of 20 UI and engineering skills, supporting references, animation recipes, and cheatsheets. See its [README](ui_skills_by_emilkowalski/README.md) and [license](ui_skills_by_emilkowalski/LICENSE). |
@@ -19,7 +20,9 @@ The repository currently contains Markdown instructions and code examples. There
 
 Read the relevant guide and apply it to the project you are working on. Review paths, module configuration, and examples against that project's actual structure before running commands.
 
-The memory setup document is a reusable setup prompt. The `memory/` files and root `AGENTS.md` it describes have not been created in this repository.
+Agents should start with [AGENTS.md](AGENTS.md) and this README, then read only the guide relevant to their task.
+
+The memory setup document is a reusable setup prompt. Its `memory/` files have not been created in this repository. The root `AGENTS.md` currently provides repository reading and working instructions.
 
 ## Development status
 
