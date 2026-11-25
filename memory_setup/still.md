@@ -30,7 +30,8 @@ memory/
 ├── DECISIONS.md
 ├── PROGRESS.md
 ├── NEXT.md
-└── SESSION.md
+├── SESSION.md
+└── TIMELINE.md
 ```
 
 Each file has a specific responsibility:
@@ -77,6 +78,38 @@ Each file has a specific responsibility:
 - Exact next development step
 - Brief handoff summary for the next Codex chat
 
+**TIMELINE.md**
+- A chronological activity log of the work done on the project
+- Write it as a running story of completed work: "Created the blogging page", then "Created the signup page", then "Connected signup to the authentication API". It should be easy for the user to see what was built and in what order.
+- Add an entry as each meaningful piece of work is completed; do not wait until the end of the entire project or combine several separately completed features into one vague summary.
+- Use a separate bullet for each completed page, feature, component, integration, or fix. Name the actual thing built or changed and briefly describe what now works.
+- Append new entries at the bottom under the current date, preserving the order in which work happened. Add a new date heading when the day changes; use the user's local date and include a time only when known and useful.
+- Prefer plain, concrete wording such as "Built the signup page with name, email, and password fields" over vague wording such as "Made progress on authentication".
+- Log partial work honestly: "Built the signup form UI; API integration is pending". Only say a feature is complete or verified when the actual implementation and checks support that claim.
+- Add a dated entry after each meaningful task, including investigations, implementation, fixes, documentation changes, and verification
+- Each entry should briefly record what was done, relevant files, the result, and any unfinished work or blockers
+- Record verification results accurately, including failed checks or checks that could not run
+- Keep earlier entries in chronological order; correct inaccurate entries explicitly rather than silently rewriting history
+- Use concise summaries, not full chat transcripts, code dumps, or secrets
+- Start with verified current-session activity; do not invent historical work
+
+Example format for `memory/TIMELINE.md` (illustrative only; replace with actual completed work):
+
+```markdown
+# Project Timeline
+
+## YYYY-MM-DD
+- Created the blogging page with a post list and links to individual posts. Files: `src/app/blog/page.tsx`. Verified: opened the page and checked the links.
+- Built the signup page with name, email, and password fields. Files: `src/app/signup/page.tsx`. Form UI is complete; authentication API integration is pending.
+- Connected the signup form to the authentication API and added validation and error messages. Verified: successful signup and invalid-input handling.
+
+## YYYY-MM-DD (next working day)
+- Created the login page and connected it to authentication. Verified: login and redirect to the dashboard.
+- Fixed the blogging page layout on mobile. Verified: checked at mobile and desktop widths.
+```
+
+This file answers **"What did we do, step by step?"** Keep adding actual completed work automatically as development progresses. Future plans belong in `NEXT.md`; the latest handoff belongs in `SESSION.md`.
+
 ## 3. Configure AGENTS.md
 
 Create or update `AGENTS.md` so Codex follows these rules:
@@ -99,11 +132,13 @@ Do not load the entire repository unnecessarily.
 - Record important implementation decisions.
 - Track unfinished work and blockers.
 - Keep memory consistent with actual code.
+- Append completed activity and its outcome to `memory/TIMELINE.md` after each meaningful task.
 - Never overwrite correct existing information without justification.
 
 ### Before ending a task
 
 - Update `SESSION.md` with the latest working state.
+- Ensure `TIMELINE.md` includes the work done during the task, relevant files, and verification outcomes.
 - Update `PROGRESS.md` when features are completed.
 - Update `NEXT.md` when priorities change.
 - Update `ARCHITECTURE.md` or `DECISIONS.md` when necessary.
@@ -128,6 +163,8 @@ Implement the following rules:
 - Keep `SESSION.md` short and focused.
 - Archive or summarize outdated information when appropriate, without destroying important decisions.
 - Never repeatedly load unnecessary documentation.
+- Keep `TIMELINE.md` as the historical activity record; keep the other memory files focused on current state rather than duplicating the log. Read only relevant timeline entries when historical context is needed.
+- If the timeline grows large, move older entries into dated files under `memory/archive/` and link them from `TIMELINE.md` so the history remains available.
 
 The memory system should help Codex start a new chat with significantly less context than the previous conversation.
 
@@ -168,6 +205,7 @@ After creating the structure:
 5. Create an accurate current-session handoff.
 6. Identify the next development priorities.
 7. Verify that `AGENTS.md` correctly references the memory files.
+8. Initialize `TIMELINE.md` with dated entries for the setup work and verification actually performed.
 
 ## 8. Verify the Memory System
 
@@ -176,6 +214,7 @@ Perform a simulated fresh-session recovery:
 - Read the memory files as if this were a new Codex conversation.
 - Determine whether the project can be understood from those files.
 - Check whether the current task and next steps are clear.
+- Check that `TIMELINE.md` accurately records completed activity and can be consulted without loading the full history.
 - Fix missing, inconsistent, or redundant information.
 - Confirm that the system does not depend on the current chat history.
 
